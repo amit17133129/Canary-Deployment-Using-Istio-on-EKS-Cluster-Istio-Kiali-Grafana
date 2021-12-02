@@ -1,7 +1,7 @@
 # Canary-Deployment-Using-Istio-on-EKS-Cluster-Istio-Kiali-Grafana
 
 <p align="center">
-  <img width="1000" height="600" src="https://miro.medium.com/max/2560/1*rvg_zBBHwD6kJshpW9vmaw.gif">
+  <img width="1000" height="600" src="https://github.com/amit17133129/images/blob/main/images/istio-final.gif?raw=true">
 </p> 
 
 ## Take away from this article:
