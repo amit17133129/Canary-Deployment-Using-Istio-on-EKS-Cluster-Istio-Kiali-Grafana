@@ -73,7 +73,7 @@ aws configure list-profiles
 ```
 
 <p align="center">
-  <img width="1000" height="100" src="https://miro.medium.com/max/1050/1*wrBKHLv71i9WUmSREqcHMA.png">
+  <img width="1000" height="150" src="https://miro.medium.com/max/1050/1*wrBKHLv71i9WUmSREqcHMA.png">
 </p> 
 
 As you can see that i have created istio profile. you can create using any name. It will ask you for aws access key, aws secret access key and region. Enter them respectively and in which region your are working enter that region name.
@@ -96,13 +96,54 @@ sudo yum install -y kubectl
 ```
 
 <p align="center">
-  <img width="1000" height="600" src="https://miro.medium.com/max/1050/1*b1seEh-Repip2maLEStQig.png">
+  <img width="1000" height="400" src="https://miro.medium.com/max/1050/1*b1seEh-Repip2maLEStQig.png">
 </p> 
 
 <p align="center">
-  <img width="1000" height="80" src="https://miro.medium.com/max/1050/1*RRwDF27E5P379hS52fBZuQ.png">
+  <img width="1000" height="100" src="https://miro.medium.com/max/1050/1*RRwDF27E5P379hS52fBZuQ.png">
 </p> 
 
 ## Installing eksctl:
 eksctl is a simple CLI tool for creating and managing clusters on EKS - Amazon's managed Kubernetes service for EC2.
+
+```
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+```
+
+<p align="center">
+  <img width="1000" height="230" src="https://miro.medium.com/max/1050/1*_zd_BKmY1FXSWQ5U8AS15A.png">
+</p> 
+
+## Creating EKS Cluster using eksctl:
+We will be creating EKS cluster on aws using eksctl. First we will be creating a profile in aws configure. eksctl is a simple CLI tool for creating and managing clusters on EKS - Amazon's managed Kubernetes service for EC2.
+
+<p align="center">
+  <img width="1000" height="230" src="https://miro.medium.com/max/1050/1*LSAKP3l1O-dxnpQE0ng9_A.png">
+</p> 
+
+Below command will create eks cluster with 2 nodes. The node type is m5.large launching in eu-west-1 region. I am using the aws credentials by istio profile which i have created above.
+`eksctl create cluster --name mycluster123 --node 2 --node-type m5.large --managed --region eu-west-1 --profile istio`
+
+<p align="center">
+  <img width="1000" height="400" src="https://miro.medium.com/max/1050/1*Duy1Vb3XAiUUChMTxhqgcg.png">
+</p> 
+
+<p align="center">
+  <img width="1000" height="200" src="https://miro.medium.com/max/1050/1*shz15SE73JSn94r9PnkDKA.png">
+</p> 
+
+As you can see that the eks cluster is up and running. So we will check the pods and node status using below commands.
+Checking Nodes and pods in all name spaces:
+The pods in all namespaces is running and the status of the nodes is ready. you can check using these commands.
+
+```
+# for checking nodes
+kubectl get nodes -o wide
+
+# for checking pods in all namespaces.
+kubectl get pods --all-namespaces
+```
+
 
